@@ -24,7 +24,6 @@ public class PlaneMovement : MonoBehaviour
         Vector2 Vel = -transform.right * (movX * acceleration);
         rb.AddForce(Vel);
         rb.rotation += -movY * rotationControl;
-        Debug.Log(rb.velocity);
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, 2);
     }
 }
