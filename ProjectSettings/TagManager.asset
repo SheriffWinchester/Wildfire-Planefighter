@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tree
   - FireTree
+  - Plane
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - Tree
   - FireTree
-  - 
+  - Plane
   - 
   - 
   - 
