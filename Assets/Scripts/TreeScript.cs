@@ -7,6 +7,7 @@ public class TreeScript : C_TreeScript
     public bool isBurning = false;
 
     public GameObject fireObject;
+    public GameObject fireIconObject;
 
     private Vector2[] directions = {
         Vector2.up,
@@ -61,9 +62,9 @@ public class TreeScript : C_TreeScript
                     if (hit.collider != null && hit.collider.gameObject.layer == 9)
                     {
                         Debug.Log("Hit house: " + hit.collider.tag);
-                        if (randomNumber > 30f)
+                        if (randomNumber > 5f)
                         {
-                            hit.collider.GetComponent<House>().health -= 10;
+                            hit.collider.GetComponent<House>().health -= 25;
                             break;
                         }
                     }
@@ -74,6 +75,7 @@ public class TreeScript : C_TreeScript
                         {
                             TreeBurn(hit.collider, fireObject, transform.position);
                             Instantiate(fireObject, (hit.collider.transform.position + fireOffset), Quaternion.identity);
+                            Instantiate(fireIconObject, (hit.collider.transform.position + fireOffset), Quaternion.identity);
                             
                             // if(hit.collider.gameObject.layer == 9)//9 - House layer
                             // {

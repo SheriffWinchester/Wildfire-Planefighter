@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class WaterTank : C_PlaneController
 {
+    public int waterTank = 0;
+
     public float fireRate = 0.35f;
     float nextFire = 0f;
     public GameObject water;
     GameObject waterObject;
     void Update()
     {
+        //Debug.Log("WATER TANK: " + waterTank);
         // if (waterTank < 10)
         // {
             FillTank();
@@ -21,7 +24,7 @@ public class WaterTank : C_PlaneController
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire && waterTank > 0)
         {
             nextFire = Time.time + fireRate;
-            Debug.Log("Shoot");
+            //Debug.Log("Shoot");
             if(Time.timeScale != 0f)
             {
                 waterObject = Instantiate(water, transform.position, Quaternion.identity);

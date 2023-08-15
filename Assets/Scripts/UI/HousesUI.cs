@@ -8,21 +8,25 @@ public class HousesUI : MonoBehaviour {
 
     public TextMeshProUGUI scoreHouse;
 
-    public GameObject objectWithScript;
+    //public GameObject objectWithScript;
     //ScoreController scoreController;
+    HouseManager houseManager;
+    GameObject controller;
+    
     
     void Start() 
     {
         //scoreController = GameObject.FindWithTag("GameController").GetComponent<ScoreController>();
         scoreHouse = GetComponent<TextMeshProUGUI>();
+        controller = GameObject.Find("Spawner Houses");
+        houseManager = controller.GetComponent<HouseManager>();
     }
 
     void Update() 
     {
-        if (HouseManager.houseObjects != null)
-        {
-            scoreHouse.text = HouseManager.houseObjects.Count.ToString();
-        }
+
+        scoreHouse.text = string.Format("{0}", houseManager.houseObjects.Count);
+
     }
 
 }

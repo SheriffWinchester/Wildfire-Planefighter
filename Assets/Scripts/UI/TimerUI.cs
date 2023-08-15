@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 public class TimerUI : MonoBehaviour
 {
-    public static float timeRemaining = 180;
+    public float timeRemaining = 180;
     public bool timerIsRunning = false;
     public TextMeshProUGUI timeText;
     void Start()

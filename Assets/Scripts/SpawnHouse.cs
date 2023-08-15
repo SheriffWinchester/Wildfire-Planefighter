@@ -7,6 +7,7 @@ public class SpawnHouse : MonoBehaviour
     [SerializeField] List<Transform> houses = new List<Transform>();
     int randomSpawn;
     public GameObject houseObject;
+    public GameObject houseIconObject;
     GameObject spawnedHouse;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class SpawnHouse : MonoBehaviour
             randomSpawn = Random.Range(1, houses.Count);
             spawnedHouse = Instantiate(houseObject, houses[randomSpawn].position, Quaternion.identity);
             spawnedHouse.name = "House " + (i + 1);
+            Instantiate(houseIconObject, houses[randomSpawn].position, Quaternion.identity);
         }
     }
 

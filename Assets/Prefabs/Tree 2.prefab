@@ -124,5 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a8388ff477137b499d71a3a1ad2bf0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainScore: 0
   isBurning: 0
   fireObject: {fileID: 6249050977725997154, guid: 564d6764f4e11c44c99d88e04c2dc329, type: 3}
+  fireIconObject: {fileID: 5526943510767164776, guid: ecffbd88398a38b408ea6fbd53e45200, type: 3}

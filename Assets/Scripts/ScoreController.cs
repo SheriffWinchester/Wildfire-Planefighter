@@ -9,16 +9,30 @@ public class ScoreController : MonoBehaviour
 
     public GameObject winMenu;
     public GameObject scoreMenu;
+    public GameObject mainInterface;
     public TextMeshProUGUI scoreWinText;
     public TextMeshProUGUI scoreText;
 
     public GameObject pauseMenu;
     public GameObject tutorialMenu;
+    public GameObject tutorialMenu2;
     bool gameIsPaused = false;
+
+    C_TreeScript c_TreeScript;
+    HouseManager houseManager;
+    TimerUI timerUI;
+    GameObject houseObjectManager;
+
+    GameObject timerUIObject;
 
     void Start() 
     {
+        houseObjectManager = GameObject.Find("Spawner Houses");
+        timerUIObject = GameObject.Find("Timer");
         scoreText = scoreMenu.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
+        c_TreeScript = GetComponent<C_TreeScript>();
+        houseManager = houseObjectManager.GetComponent<HouseManager>();
+        timerUI = timerUIObject.GetComponent<TimerUI>();
     }
 
     void Update() 
@@ -34,12 +48,13 @@ public class ScoreController : MonoBehaviour
         //     scoreWinText.text = "Score " + score;
 
         // }
-        //if (TimerUI.timeRemaining <= 0 || HouseManager.houseObjects.Count <= 0)
-        if (HouseManager.houseObjects.Count <= 0)
+        //if (timerUI.timeRemaining <= 0 || HouseManager.houseObjects.Count <= 0)
+        if (timerUI.timeRemaining <= 0 || houseManager.houseObjects.Count <= 0)
         {
             Time.timeScale = 0;
             scoreMenu.SetActive(true);
-            scoreText.text = C_TreeScript.mainScore.ToString();
+            mainInterface.SetActive(false);
+            scoreText.text = c_TreeScript.mainScore.ToString();
             
         }
         // if(tutorialMenu.activeInHierarchy != true)
@@ -57,10 +72,16 @@ public class ScoreController : MonoBehaviour
                     pauseMenu.SetActive(true);
                     gameIsPaused = true;
                 }
-                // if (tutorialMenu.activeInHierarchy == true)
-                // {
-                //     tutorialMenu.SetActive(false);
-                // }
+                if (tutorialMenu.activeInHierarchy == true || tutorialMenu2.activeInHierarchy == true)
+                {
+                    tutorialMenu.SetActive(false);
+                }
+                if (tutorialMenu2.activeInHierarchy == true)
+                {
+                    tutorialMenu2.SetActive(false);
+                    mainInterface.SetActive(true);
+                    
+                }
             }
         //}
         

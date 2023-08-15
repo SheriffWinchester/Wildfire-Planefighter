@@ -3,17 +3,18 @@ using System.Collections.Generic;
 
 public class HouseManager : MonoBehaviour
 {
-    public static List<GameObject> houseObjects = new List<GameObject>();
+    public List<GameObject> houseObjects = new List<GameObject>();
+    public GameObject[] foundHouses;
     bool foundObjects = true;
 
-    void Start()
-    {
+    // void Start()
+    // {
         
-        for (int i = 0; i < houseObjects.Count; i++)
-        {
-            Debug.Log(houseObjects[i].name);
-        }
-    }
+    //     for (int i = 0; i < houseObjects.Count; i++)
+    //     {
+    //         Debug.Log(houseObjects[i].name);
+    //     }
+    // }
 
    
 
@@ -21,7 +22,6 @@ public class HouseManager : MonoBehaviour
     {
         FindAndStoreHouseObjects();
         CheckHouseObjectsExistence();
-        //Debug.Log(houseObjects.Count);
     }
 
     void CheckHouseObjectsExistence()
@@ -43,7 +43,7 @@ public class HouseManager : MonoBehaviour
     }
      void FindAndStoreHouseObjects()
     {
-        GameObject[] foundHouses = GameObject.FindGameObjectsWithTag("House");
+        foundHouses = GameObject.FindGameObjectsWithTag("House");
         if (foundObjects)
         {
             foreach (GameObject house in foundHouses)

@@ -5,9 +5,9 @@ using UnityEngine;
 public class C_PlaneController : MonoBehaviour
 {
     //Plane's water tank counter
-    [SerializeField] public static int waterTank = 0;
+    //public int waterTank = 0;
     public static bool waterStay = false;
-    public static int tankCounter = 1;
+    public int tankCounter = 1;
     public void MovePlane(float movX, float movY, float acceleration, float rotationControl, Rigidbody2D rb)
     {
         Vector2 Vel = transform.up * (movX * acceleration);
