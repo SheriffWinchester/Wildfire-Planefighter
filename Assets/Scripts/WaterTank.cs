@@ -10,7 +10,10 @@ public class WaterTank : C_PlaneController
     GameObject waterObject;
     void Update()
     {
-        FillTank();
+        // if (waterTank < 10)
+        // {
+            FillTank();
+        // }
         DropWater();
     }
     public void DropWater()
@@ -30,9 +33,12 @@ public class WaterTank : C_PlaneController
     {
         if (waterStay)
         {
-            if (Input.GetKeyDown(KeyCode.C))
+            if (waterTank < 10)
             {
-               waterTank += tankCounter;
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                waterTank += tankCounter;
+                }
             }
         }
         //Debug.Log(waterTank);

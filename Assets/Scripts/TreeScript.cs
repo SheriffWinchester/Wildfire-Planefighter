@@ -19,7 +19,7 @@ public class TreeScript : C_TreeScript
         new Vector2(-1, 1).normalized
     };
 
-    Vector3 fireOffset = new Vector3(0, 0.3f, 0);
+    Vector3 fireOffset = new Vector3(0, 0.5f, 0);
 
     void Start()
     {
@@ -31,10 +31,10 @@ public class TreeScript : C_TreeScript
     }
     void Update()
     {
-        // if(gameObject.layer == 7)
-        // {
-        //     isBurning = true;
-        // }
+        if(gameObject.layer == 7)
+        {
+            isBurning = true;
+        }
         // if(isBurning)
         // {
             
@@ -56,12 +56,12 @@ public class TreeScript : C_TreeScript
                 //Raycast in 8 directions
                 foreach (Vector2 direction in directions)
                 {
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance: 1);
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance: 3);
                     Debug.DrawRay(transform.position, direction, color: Color.red, duration: 2);
                     if (hit.collider != null && hit.collider.gameObject.layer == 9)
                     {
                         Debug.Log("Hit house: " + hit.collider.tag);
-                        if (randomNumber > 50f)//Chance of burning the tree, if the raycast hit succesfully - exit the foreach loop
+                        if (randomNumber > 30f)
                         {
                             hit.collider.GetComponent<House>().health -= 10;
                             break;
@@ -75,10 +75,10 @@ public class TreeScript : C_TreeScript
                             TreeBurn(hit.collider, fireObject, transform.position);
                             Instantiate(fireObject, (hit.collider.transform.position + fireOffset), Quaternion.identity);
                             
-                            if(hit.collider.gameObject.layer == 9)//9 - House layer
-                            {
-                                hit.collider.GetComponent<House>().health -= 10;
-                            }
+                            // if(hit.collider.gameObject.layer == 9)//9 - House layer
+                            // {
+                            //     hit.collider.GetComponent<House>().health -= 10;
+                            // }
                             //isBurning = true;
                             Debug.Log(isBurning);
                             break;

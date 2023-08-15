@@ -28,7 +28,7 @@ public class WaterScript : MonoBehaviour
 
         boxCollider = GetComponent<BoxCollider2D>();
         boxCollider.enabled = false;
-
+        StartCoroutine(destroyObject());
         //c_TreeScript = GetComponent<C_TreeScript>();
     }
 
@@ -38,17 +38,27 @@ public class WaterScript : MonoBehaviour
         ReduceScale();
         ReduceSpeed();
 
-        Debug.Log("Plane: " + rb_plane.velocity);
-        Debug.Log("Water: " + rb.velocity);
+        // Debug.Log("Plane: " + rb_plane.velocity);
+        // Debug.Log("Water: " + rb.velocity);
   
+    }
+    IEnumerator destroyObject()
+    {
+        yield return new WaitForSeconds(2f);
+        //while(true)
+        //{
+            Destroy(gameObject);
+        //}
+        
     }
     void OnTriggerEnter2D(Collider2D collision)//Check tree's layer and extinguish
     {
+        Debug.Log("Try");
         if (collision.gameObject.layer == 7)//7 - "FireTree"
         {
             //Debug.Log(collision.gameObject.name);
             C_TreeScript.TreeExtinguish(collision);
-            Destroy(gameObject);
+            //Destroy(gameObject);
 
             Debug.Log("EXTINGUISH");
         }
@@ -60,7 +70,7 @@ public class WaterScript : MonoBehaviour
         {
             _currentScale = TargetScale;
             boxCollider.enabled = true;
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         gameObject.transform.localScale = Vector3.one * _currentScale;
     }

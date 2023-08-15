@@ -9,6 +9,7 @@ TagManager:
   - Plane
   - Water
   - House
+  - Bounds
   layers:
   - Default
   - TransparentFX

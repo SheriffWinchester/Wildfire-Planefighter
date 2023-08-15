@@ -5,8 +5,9 @@ using UnityEngine;
 public class SpawnHouse : MonoBehaviour
 {
     [SerializeField] List<Transform> houses = new List<Transform>();
-    int randomHouse;
+    int randomSpawn;
     public GameObject houseObject;
+    GameObject spawnedHouse;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,8 +15,12 @@ public class SpawnHouse : MonoBehaviour
         {
             houses.Add(g); // Add each Transform to the List
         }
-        randomHouse = Random.Range(1, houses.Count);
-        Instantiate(houseObject, houses[randomHouse].position, Quaternion.identity);
+        for (int i = 0; i < 3; i++)
+        {
+            randomSpawn = Random.Range(1, houses.Count);
+            spawnedHouse = Instantiate(houseObject, houses[randomSpawn].position, Quaternion.identity);
+            spawnedHouse.name = "House " + (i + 1);
+        }
     }
 
     // Update is called once per frame
