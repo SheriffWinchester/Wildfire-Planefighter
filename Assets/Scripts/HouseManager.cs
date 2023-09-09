@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class HouseManager : MonoBehaviour
 {
-    public List<GameObject> houseObjects = new List<GameObject>();
+    //public List<GameObject> houseObjects = new List<GameObject>();
     public GameObject[] foundHouses;
     bool foundObjects = true;
 
@@ -26,13 +26,13 @@ public class HouseManager : MonoBehaviour
 
     void CheckHouseObjectsExistence()
     {
-        if (houseObjects.Count > 0)
+        if (Singleton.instance.houseObjects.Count > 0)
         {
-            foreach (GameObject house in houseObjects)
+            foreach (GameObject house in Singleton.instance.houseObjects)
             {
                 if (house == null)
                 {
-                    houseObjects.Remove(house);
+                    Singleton.instance.houseObjects.Remove(house);
                     //Debug.Log("A house is missing from the scene!");
                     
                 }
@@ -48,7 +48,7 @@ public class HouseManager : MonoBehaviour
         {
             foreach (GameObject house in foundHouses)
             {
-                houseObjects.Add(house);
+                Singleton.instance.houseObjects.Add(house);
             }
             foundObjects = false;
         }

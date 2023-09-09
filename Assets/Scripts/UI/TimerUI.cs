@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 public class TimerUI : MonoBehaviour
 {
-    public float timeRemaining = 180;
+    //public float timeRemaining = 180;
     public bool timerIsRunning = false;
     public TextMeshProUGUI timeText;
     void Start()
@@ -18,15 +18,15 @@ public class TimerUI : MonoBehaviour
     {
         if (timerIsRunning)
         {
-            if (timeRemaining > 0)
+            if (Singleton.instance.timeRemaining > 0)
             {
-                timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
+                Singleton.instance.timeRemaining -= Time.deltaTime;
+                DisplayTime(Singleton.instance.timeRemaining);
             }
             else
             {
                 Debug.Log("Time has run out!");
-                timeRemaining = 0;
+                Singleton.instance.timeRemaining = 0;
                 timerIsRunning = false;
             }
         }

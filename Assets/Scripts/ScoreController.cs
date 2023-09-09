@@ -19,20 +19,9 @@ public class ScoreController : MonoBehaviour
     bool gameIsPaused = false;
 
     C_TreeScript c_TreeScript;
-    HouseManager houseManager;
-    TimerUI timerUI;
-    GameObject houseObjectManager;
-
-    GameObject timerUIObject;
-
     void Start() 
     {
-        houseObjectManager = GameObject.Find("Spawner Houses");
-        timerUIObject = GameObject.Find("Timer");
         scoreText = scoreMenu.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
-        //c_TreeScript = GetComponent<C_TreeScript>();
-        houseManager = houseObjectManager.GetComponent<HouseManager>();
-        timerUI = timerUIObject.GetComponent<TimerUI>();
     }
 
     void Update() 
@@ -49,7 +38,7 @@ public class ScoreController : MonoBehaviour
 
         // }
         //if (timerUI.timeRemaining <= 0 || HouseManager.houseObjects.Count <= 0)
-        if (timerUI.timeRemaining <= 0 || houseManager.houseObjects.Count <= 0)
+        if (Singleton.instance.timeRemaining <= 0 || Singleton.instance.houseObjects.Count <= 0)
         {
             Time.timeScale = 0;
             scoreMenu.SetActive(true);
