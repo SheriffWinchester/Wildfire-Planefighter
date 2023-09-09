@@ -30,7 +30,7 @@ public class ScoreController : MonoBehaviour
         houseObjectManager = GameObject.Find("Spawner Houses");
         timerUIObject = GameObject.Find("Timer");
         scoreText = scoreMenu.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
-        c_TreeScript = GetComponent<C_TreeScript>();
+        //c_TreeScript = GetComponent<C_TreeScript>();
         houseManager = houseObjectManager.GetComponent<HouseManager>();
         timerUI = timerUIObject.GetComponent<TimerUI>();
     }
@@ -54,7 +54,7 @@ public class ScoreController : MonoBehaviour
             Time.timeScale = 0;
             scoreMenu.SetActive(true);
             mainInterface.SetActive(false);
-            scoreText.text = c_TreeScript.mainScore.ToString();
+            scoreText.text = Singleton.instance.mainScore.ToString();
             
         }
         // if(tutorialMenu.activeInHierarchy != true)

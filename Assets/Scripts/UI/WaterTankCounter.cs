@@ -16,13 +16,13 @@ public class WaterTankCounter : MonoBehaviour {
     {
         //scoreController = GameObject.FindWithTag("GameController").GetComponent<ScoreController>();
         waterTankText = GetComponent<TextMeshProUGUI>();
-        controller = GameObject.Find("Fireplane");
-        waterTankComp = controller.GetComponent<WaterTank>();
+        // controller = GameObject.Find("Fireplane");
+        // waterTankComp = controller.GetComponent<WaterTank>();
     }
 
     void Update() 
     {
-        waterTankText.text = waterTankComp.waterTank.ToString();
+        waterTankText.text = Singleton.instance.waterTank.ToString();
     }
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaterTank : C_PlaneController
 {
-    public int waterTank = 0;
+    //public int waterTank = 0;
 
     public float fireRate = 0.35f;
     float nextFire = 0f;
@@ -21,14 +21,14 @@ public class WaterTank : C_PlaneController
     }
     public void DropWater()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire && waterTank > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire && Singleton.instance.waterTank > 0)
         {
             nextFire = Time.time + fireRate;
             //Debug.Log("Shoot");
             if(Time.timeScale != 0f)
             {
                 waterObject = Instantiate(water, transform.position, Quaternion.identity);
-                waterTank -= tankCounter;
+                Singleton.instance.waterTank -= tankCounter;
             }
         }
     }
@@ -36,11 +36,11 @@ public class WaterTank : C_PlaneController
     {
         if (waterStay)
         {
-            if (waterTank < 10)
+            if (Singleton.instance.waterTank < 10)
             {
                 if (Input.GetKeyDown(KeyCode.C))
                 {
-                waterTank += tankCounter;
+                Singleton.instance.waterTank += tankCounter;
                 }
             }
         }
